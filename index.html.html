@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Dashboard</title>
+<style>
+body { font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 20px; }
+h1 { color: darkorange; }
+.stats { display: flex; gap: 12px; margin: 20px 0; }
+.stat-box { background-color: white; padding: 15px; border-radius: 8px; flex: 1; text-align: center; }
+.stat-number { font-size: 28px; font-weight: bold; color: darkorange; }
+.stat-label { font-size: 13px; color: gray; }
+.bar-row { display: flex; align-items: center; margin: 10px 0; }
+.bar-label { width: 60px; font-weight: bold; }
+.bar-track { background-color: #ddd; flex: 1; height: 20px; border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; }
+.bjp-color { background-color: #e0a63c; }
+.aap-color { background-color: #3a6ea5; }
+.inc-color { background-color: #3f7d5c; }
+.party-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 20px; }
+.party-card { background-color: white; border-radius: 8px; padding: 15px; cursor: pointer; }
+.party-card h3 { margin-top: 0; }
+.party-card ul { padding-left: 18px; font-size: 14px; }
+.ward-section { margin-top: 20px; }
+.ward-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px; margin-top: 15px; }
+.ward-card { background-color: white; border-radius: 6px; padding: 10px; text-align: center; cursor: pointer; border-top: 4px solid #ccc; }
+.ward-no { font-size: 11px; color: darkorange; font-weight: bold; }
+.ward-name { font-size: 14px; margin-top: 4px; }
+.funnel-row { display: flex; align-items: center; margin: 10px 0; }
+.funnel-label { width: 110px; font-size: 13px; font-weight: bold; }
+.funnel-track { background-color: #ddd; height: 26px; border-radius: 4px; overflow: hidden; }
+.funnel-fill { height: 100%; background-color: darkorange; display: flex; align-items: center; padding-left: 8px; color: white; font-size: 12px; font-weight: bold; }
+.matrix-box { position: relative; width: 400px; height: 400px; background-color: white; border: 1px solid #ccc; margin-top: 20px; }
+.matrix-box::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background-color: #ccc; }
+.matrix-box::after { content: ""; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background-color: #ccc; }
+.matrix-dot { position: absolute; width: 16px; height: 16px; border-radius: 50%; transform: translate(-50%, -50%); cursor: pointer; }
+.matrix-label { position: absolute; font-size: 11px; font-weight: bold; transform: translate(-50%, 8px); text-align: center; width: 90px; margin-left: -45px; }
+.seg-table { width: 100%; border-collapse: collapse; margin-top: 15px; background-color: white; }
+.seg-table th, .seg-table td { border: 1px solid #ddd; padding: 10px; text-align: left; font-size: 13px; }
+.seg-table th { background-color: #333; color: white; }
+.seg-table tr:nth-child(even) { background-color: #f9f9f9; }
+@media (max-width: 600px) {
+.stats { flex-direction: column; }
+.party-grid { grid-template-columns: 1fr; }
+.ward-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<h1>Bawana Election Dashboard</h1>
+
+<div style="background-color:#1a1a1a; color:white; padding:14px 18px; border-radius:8px; margin:20px 0; text-align:center;">
+<span style="font-size:13px; color:#aaa;">EXPECTED MCD ELECTION — FEB 2027</span><br>
+<span id="countdown" style="font-size:22px; font-weight:bold; color:#e0a63c;"></span>
+</div>
+
+<div style="background-color:white; border-left:4px solid darkorange; padding:14px 18px; margin:20px 0; font-size:14px; line-height:1.6;">
+<strong>Read of the race:</strong> BJP enters 2027 with a comfortable assembly margin but zero MCD-level track record here — its 2025 win hasn't yet been tested at the ward level, where the campaign will actually be fought. AAP lost the seat by double digits but keeps a deeper organisational base built over a decade of SC-reserved-seat wins, and it's already campaigning early. INC remains a distant third but is the only party gaining ground, making it a longer-term rebuild rather than a 2027 contender. The most persuadable segments — first-time voters and industrial workers — are also the ones least locked into either major party, making them the real battleground here.
+</div>
+
+<div class="stats">
+<div class="stat-box"><div class="stat-number">2,28,510</div><div class="stat-label">Electors</div></div>
+<div class="stat-box"><div class="stat-number">59.7%</div><div class="stat-label">Turnout</div></div>
+<div class="stat-box"><div class="stat-number">5</div><div class="stat-label">MCD Wards</div></div>
+</div>
+
+<h2>Vote Share 2025</h2>
+<div class="bar-row"><div class="bar-label">BJP</div><div class="bar-track"><div class="bar-fill bjp-color" style="width: 52%;"></div></div></div>
+<div class="bar-row"><div class="bar-label">AAP</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 38%;"></div></div></div>
+<div class="bar-row"><div class="bar-label">INC</div><div class="bar-track"><div class="bar-fill inc-color" style="width: 8%;"></div></div></div>
+
+<h2>Where Each Party Stands</h2>
+<div class="party-grid">
+<div class="party-card" onclick="toggleDetail('bjpMore')">
+<h3>BJP &#9662;</h3>
+<ul><li>Won the seat in 2025 with a 31,475-vote margin</li><li>Holds the MCD mayor's post citywide</li><li>First civic-level test since the assembly win</li></ul>
+<div id="bjpMore" style="display:none; margin-top:10px; padding-top:10px; border-top:1px solid #eee; font-size:13px; color:#555;">
+Strategy note: needs to convert assembly-level goodwill into ward-level delivery credit before 2027 — incumbency now cuts both ways.
+</div>
+</div>
+
+<div class="party-card" onclick="toggleDetail('aapMore')">
+<h3>AAP &#9662;</h3>
+<ul><li>Held this seat 2015–2025, deep prior organisation</li><li>Won all 12 Delhi SC-reserved seats in 2020</li><li>Already campaigning for 2027, over 2 years out</li></ul>
+<div id="aapMore" style="display:none; margin-top:10px; padding-top:10px; border-top:1px solid #eee; font-size:13px; color:#555;">
+Strategy note: needs to re-energise cadre after a demoralising assembly loss, likely by leaning hard on local civic delivery promises.
+</div>
+</div>
+
+<div class="party-card" onclick="toggleDetail('incMore')">
+<h3>INC &#9662;</h3>
+<ul><li>Only party gaining vote share in 2025 (+1.7pp)</li><li>Held the seat 1998–2013, long institutional memory</li><li>Starting from under 10% — needs a local, not state, strategy</li></ul>
+<div id="incMore" style="display:none; margin-top:10px; padding-top:10px; border-top:1px solid #eee; font-size:13px; color:#555;">
+Strategy note: a serious ward win here needs hyper-local candidates and issues, not a state-level Congress message.
+</div>
+</div>
+</div>
+
+<h2>Candidate Watch</h2>
+<div style="display:flex; gap:8px; margin-bottom:10px;">
+<button onclick="showCandidate('bjpCand')" style="padding:8px 14px; border:none; border-radius:4px; background-color:#e0a63c; color:white; cursor:pointer; font-weight:bold;">BJP</button>
+<button onclick="showCandidate('aapCand')" style="padding:8px 14px; border:none; border-radius:4px; background-color:#3a6ea5; color:white; cursor:pointer; font-weight:bold;">AAP</button>
+<button onclick="showCandidate('incCand')" style="padding:8px 14px; border:none; border-radius:4px; background-color:#3f7d5c; color:white; cursor:pointer; font-weight:bold;">INC</button>
+</div>
+
+<div id="bjpCand" class="cand-panel" style="background-color:white; border-radius:8px; padding:16px;">
+<strong>Ravinder Indraj Singh</strong> — sitting MLA, won 2025 with 119,515 votes (51.99%)<br>
+<span style="font-size:13px; color:gray;">First-time civic-level test since taking the assembly seat.</span>
+</div>
+
+<div id="aapCand" class="cand-panel" style="display:none; background-color:white; border-radius:8px; padding:16px;">
+<strong>Jai Bhagwan (Upkar)</strong> — former MLA (2020–2025), lost 2025 by 31,475 votes<br>
+<span style="font-size:13px; color:gray;">Long-standing local presence, held the seat for one full term.</span>
+</div>
+
+<div id="incCand" class="cand-panel" style="display:none; background-color:white; border-radius:8px; padding:16px;">
+<strong>Surender Kumar</strong> — 2025 candidate, 18,713 votes (8.14%)<br>
+<span style="font-size:13px; color:gray;">Distant third; rebuilding local recognition is step one.</span>
+</div>
+
+<div class="ward-section">
+<h2>Wards on the Ground</h2>
+<div class="ward-grid">
+<div class="ward-card" style="border-top-color:#3a6ea5;" onclick="showWard('Bawana (Ward 30)', '2022 MCD result: AAP won with 10,654 votes vs BJP 9,930 votes. Margin: 724.')"><div class="ward-no">WARD 30</div><div class="ward-name">Bawana</div></div>
+<div class="ward-card" style="border-top-color:#e0a63c;" onclick="showWard('Pooth Khurd (Ward 29)', '2022 MCD result: BJP won with 13,016 votes vs AAP 11,522 votes. Margin: 1,494.')"><div class="ward-no">WARD 29</div><div class="ward-name">Pooth Khurd</div></div>
+<div class="ward-card" style="border-top-color:#3a6ea5;" onclick="showWard('Bankner (Ward 2)', '2022 MCD result: AAP won — Dinesh Kumar (AAP) elected. Full margin not sourced yet, but confirmed AAP win.')"><div class="ward-no">WARD 2</div><div class="ward-name">Bankner</div></div>
+<div class="ward-card" style="border-top-color:#3a6ea5;" onclick="showWard('Holambi Kalan (Ward 3)', '2022 MCD result: AAP won — Neha (AAP) elected. Full margin not sourced yet, but confirmed AAP win.')"><div class="ward-no">WARD 3</div><div class="ward-name">Holambi Kalan</div></div>
+<div class="ward-card" style="border-top-color:#e0a63c;" onclick="showWard('Nangal Thakran (Ward 31)', '2022 MCD result: BJP won with 11,661 votes vs AAP 9,506 votes. Margin: 2,155.')"><div class="ward-no">WARD 31</div><div class="ward-name">Nangal Thakran</div></div>
+</div>
+
+<div id="wardDetail" style="display:none; background-color:white; border-radius:8px; padding:15px; margin-top:12px; border-left:4px solid darkorange;">
+<strong id="wardDetailTitle"></strong>
+<p id="wardDetailText" style="margin:6px 0 0; font-size:14px;"></p>
+</div>
+</div>
+<h2>Ward-wise Margins (2022 MCD)</h2>
+<p style="font-size:13px; color:gray;">How close each ward's race actually was — smaller bar means a more contestable seat in 2027.</p>
+<div class="bar-row"><div class="bar-label" style="width:140px;">Bawana</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 15%;"></div></div><span style="font-size:12px; margin-left:8px;">724 (AAP)</span></div>
+<div class="bar-row"><div class="bar-label" style="width:140px;">Pooth Khurd</div><div class="bar-track"><div class="bar-fill bjp-color" style="width: 31%;"></div></div><span style="font-size:12px; margin-left:8px;">1,494 (BJP)</span></div>
+<div class="bar-row"><div class="bar-label" style="width:140px;">Nangal Thakran</div><div class="bar-track"><div class="bar-fill bjp-color" style="width: 45%;"></div></div><span style="font-size:12px; margin-left:8px;">2,155 (BJP)</span></div>
+<div class="bar-row"><div class="bar-label" style="width:140px;">Bankner</div><div class="bar-track"><div class="bar-fill" style="width: 0%; background-color:#ccc;"></div></div><span style="font-size:12px; margin-left:8px; color:gray;">Not sourced</span></div>
+<div class="bar-row"><div class="bar-label" style="width:140px;">Holambi Kalan</div><div class="bar-track"><div class="bar-fill" style="width: 0%; background-color:#ccc;"></div></div><span style="font-size:12px; margin-left:8px; color:gray;">Not sourced</span></div>
+
+<h2>Voter Funnel</h2>
+<div class="funnel-row">
+<div class="funnel-label">Awareness</div>
+<div class="funnel-track" style="width: 500px;"><div class="funnel-fill" style="width: 95%;">95%</div></div>
+</div>
+<div class="funnel-row">
+<div class="funnel-label">Consideration</div>
+<div class="funnel-track" style="width: 500px;"><div class="funnel-fill" style="width: 70%;">70%</div></div>
+</div>
+<div class="funnel-row">
+<div class="funnel-label">Persuasion</div>
+<div class="funnel-track" style="width: 500px;"><div class="funnel-fill" style="width: 45%;">45%</div></div>
+</div>
+<div class="funnel-row">
+<div class="funnel-label">Turnout</div>
+<div class="funnel-track" style="width: 500px;"><div class="funnel-fill" style="width: 30%;">30%</div></div>
+</div>
+
+<h2>Positioning Matrix</h2>
+<p style="font-size:13px; color:gray;">X-axis: Continuity → Change &nbsp;|&nbsp; Y-axis: State-aligned → Locally-focused</p>
+<div class="matrix-box">
+<div class="matrix-dot bjp-color" style="left: 25%; top: 20%;" onclick="showPosMatrixDetail('BJP', 'Positioned toward continuity and state-alignment — leaning on its 2025 assembly win and citywide mayoral control, but yet to prove itself on hyper-local delivery.')"></div>
+<div class="matrix-label" style="left: 25%; top: 20%;">BJP</div>
+<div class="matrix-dot aap-color" style="left: 75%; top: 55%;" onclick="showPosMatrixDetail('AAP', 'Positioned as the change option, more locally-focused — its pitch is a return to civic-level delivery after losing the state government.')"></div>
+<div class="matrix-label" style="left: 75%; top: 55%;">AAP</div>
+<div class="matrix-dot inc-color" style="left: 65%; top: 85%;" onclick="showPosMatrixDetail('INC', 'A local-change positioning by necessity, given its distant third-place standing — needs a hyper-local message to be heard at all.')"></div>
+<div class="matrix-label" style="left: 65%; top: 85%;">INC</div>
+</div>
+
+<div id="posMatrixDetail" style="display:none; background-color:white; border-radius:8px; padding:15px; margin-top:12px; border-left:4px solid darkorange;">
+<strong id="posMatrixDetailTitle"></strong>
+<p id="posMatrixDetailText" style="margin:6px 0 0; font-size:14px;"></p>
+</div>
+
+<h2>Segment Targeting</h2>
+<table class="seg-table">
+<tr>
+<th>Segment</th>
+<th>Est. Size</th>
+<th>Persuadability</th>
+<th>Priority</th>
+</tr>
+<tr>
+<td>Industrial workers</td>
+<td>~35,000–45,000 (est.)</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr>
+<td>First-time voters</td>
+<td>~15,000–20,000 (est.)</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Resettlement colony residents</td>
+<td>~60,000–80,000 (est.)</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Older-village core voters</td>
+<td>~25,000–30,000 (est.)</td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+</table>
+
+<h2>Issue Priority Matrix</h2>
+<p style="font-size:13px; color:gray;">X-axis: Low salience → High salience &nbsp;|&nbsp; Y-axis: Hard to deliver → Easy to deliver</p>
+<div class="matrix-box">
+<div class="matrix-dot bjp-color" style="left: 88%; top: 15%;" onclick="showMatrixDetail('Industrial jobs', 'High salience — voters care a lot. Hard to deliver — MCD has limited direct control over factory employment.')"></div>
+<div class="matrix-label" style="left: 88%; top: 15%;">Industrial jobs</div>
+<div class="matrix-dot inc-color" style="left: 50%; top: 12%;" onclick="showMatrixDetail('Resettlement / land tenure', 'High salience but politically slow to resolve — land tenure decisions often sit above the MCD level.')"></div>
+<div class="matrix-label" style="left: 50%; top: 12%;">Resettlement / land tenure</div>
+<div class="matrix-dot aap-color" style="left: 70%; top: 85%;" onclick="showMatrixDetail('Water & drainage', 'Moderate-high salience, and directly deliverable — this is a core MCD responsibility, making it a strong campaign promise.')"></div>
+<div class="matrix-label" style="left: 70%; top: 85%;">Water & drainage</div>
+<div class="matrix-dot" style="left: 20%; top: 88%; background-color: #7c3aed;" onclick="showMatrixDetail('Unauthorised construction', 'Lower salience than jobs or land, but this is literally an MCD function — quick wins are possible here.')"></div>
+<div class="matrix-label" style="left: 20%; top: 88%;">Unauthorised construction</div>
+</div>
+
+<div id="matrixDetail" style="display:none; background-color:white; border-radius:8px; padding:15px; margin-top:12px; border-left:4px solid darkorange;">
+<strong id="matrixDetailTitle"></strong>
+<p id="matrixDetailText" style="margin:6px 0 0; font-size:14px;"></p>
+</div>
+
+<div style="margin-top:30px; padding-top:15px; border-top:1px solid #ccc; font-size:12px; color:gray;">
+<strong>Sources:</strong> Election results and electorate figures — ECI/Wikipedia (Bawana Assembly constituency). Ward boundaries — SEC Delhi ward delimitation maps (approximate, verify before fieldwork). Segment size estimates are rough working figures based on general local reporting, not Census-verified counts.<br><br>
+Built as a training exercise in campaign analysis, September 2026. Not affiliated with any party or candidate.
+</div>
+
+<script>
+function showWard(name, text) {
+  document.getElementById("wardDetailTitle").innerText = name;
+  document.getElementById("wardDetailText").innerText = text;
+  document.getElementById("wardDetail").style.display = "block";
+}
+
+function toggleDetail(id) {
+  var el = document.getElementById(id);
+  if (el.style.display === "none") {
+    el.style.display = "block";
+  } else {
+    el.style.display = "none";
+  }
+}
+
+function showCandidate(id) {
+  var panels = document.getElementsByClassName("cand-panel");
+  for (var i = 0; i < panels.length; i++) {
+    panels[i].style.display = "none";
+  }
+  document.getElementById(id).style.display = "block";
+}
+
+function updateCountdown() {
+  var electionDate = new Date("2027-02-15");
+  var today = new Date();
+  var diffTime = electionDate - today;
+  var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  document.getElementById("countdown").innerText = diffDays + " days to go";
+}
+updateCountdown();
+
+function showMatrixDetail(name, text) {
+  document.getElementById("matrixDetailTitle").innerText = name;
+  document.getElementById("matrixDetailText").innerText = text;
+  document.getElementById("matrixDetail").style.display = "block";
+}
+function showPosMatrixDetail(name, text) {
+  document.getElementById("posMatrixDetailTitle").innerText = name;
+  document.getElementById("posMatrixDetailText").innerText = text;
+  document.getElementById("posMatrixDetail").style.display = "block";
+}
+function showPosMatrixDetail(name, text) {
+  document.getElementById("posMatrixDetailTitle").innerText = name;
+  document.getElementById("posMatrixDetailText").innerText = text;
+  document.getElementById("posMatrixDetail").style.display = "block";
+}
+</script>
+</body>
+</html>
