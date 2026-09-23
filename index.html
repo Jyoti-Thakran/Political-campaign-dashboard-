@@ -75,7 +75,12 @@ h1 { color: darkorange; }
 <body>
 
 <h1>Bawana Election Dashboard</h1>
-
+<div style="background:white; border-radius:8px; padding:12px 15px; margin:15px 0; border-left:4px solid #333;">
+  <strong>Election Scope</strong>
+  <span style="font-size:13px; color:gray; margin-left:10px;">
+    Assembly 2025 = Bawana AC | MCD 2022 = ward-level results; ward-to-AC mapping follows SEC Delhi
+  </span>
+</div>
 <div style="background-color:#1a1a1a; color:white; padding:14px 18px; border-radius:8px; margin:20px 0; text-align:center;">
 <span style="font-size:13px; color:#aaa;">EXPECTED MCD ELECTION — FEB 2027</span><br>
 <span id="countdown" style="font-size:22px; font-weight:bold; color:#e0a63c;"></span>
@@ -86,18 +91,18 @@ h1 { color: darkorange; }
 </div>
 
 <div style="background-color:white; border-left:4px solid darkorange; padding:14px 18px; margin:20px 0; font-size:14px; line-height:1.6;">
-<strong>Read of the race:</strong> BJP holds the <span class="election-tag tag-assembly">ASSEMBLY 2025</span> seat with a comfortable margin, but at the <span class="election-tag tag-mcd">MCD 2022</span> ward level, AAP actually controls 3 of the 5 wards (Bawana, Bankner, Holambi Kalan) to BJP's 2 (Pooth Khurd, Nangal Thakran) — and the Bankner ward was razor-thin, decided by just 378 votes. That gap between assembly momentum and ward-level presence is the central tension heading into 2027.
+<strong>Read of the race:</strong> BJP holds the <span class="election-tag tag-assembly">ASSEMBLY 2025</span> seat. In the <span class="election-tag tag-mcd">MCD 2022</span> results shown here, AAP won Bawana, Bankner and Holambi Kalan, while BJP won Pooth Khurd and Nangal Thakran. Bankner was decided by 378 votes.
 </div>
 
-<h2>Vote Share — Assembly 2025 <span class="election-tag tag-assembly">STATE-LEVEL</span></h2>
+<h2>Vote Share — Assembly 2025 <span class="election-tag tag-assembly">BAWANA AC</span></h2>
 <p style="font-size:13px; color:gray;">Click a party in the legend to see its detail.</p>
 <div class="pie-wrap">
 <div class="pie-chart" style="background: conic-gradient(#e0a63c 0% 52%, #3a6ea5 52% 90%, #3f7d5c 90% 98%, #ccc 98% 100%);"></div>
 <div class="pie-legend">
-<div class="pie-legend-item" onclick="showPieDetail('BJP', '52% vote share (119,515 votes) — won the seat with a 31,475-vote margin over AAP.')"><span class="pie-dot" style="background:#e0a63c;"></span>BJP — 52%</div>
-<div class="pie-legend-item" onclick="showPieDetail('AAP', '38% vote share (88,040 votes) — lost the seat after holding it since 2015.')"><span class="pie-dot" style="background:#3a6ea5;"></span>AAP — 38%</div>
-<div class="pie-legend-item" onclick="showPieDetail('INC', '8% vote share (18,713 votes) — distant third, but the only party gaining ground versus 2020.')"><span class="pie-dot" style="background:#3f7d5c;"></span>INC — 8%</div>
-<div class="pie-legend-item" onclick="showPieDetail('Others / NOTA', 'Remaining ~2% split between NOTA and minor candidates.')"><span class="pie-dot" style="background:#ccc;"></span>Others/NOTA — 2%</div>
+<div class="pie-segment" style="--value:52.30; --color:#ff7f00;">BJP 52.30%</div>
+<div class="pie-segment" style="--value:38.53; --color:#00a86b;">AAP 38.53%</div>
+<div class="pie-segment" style="--value:8.19; --color:#19a974;">INC 8.19%</div>
+<div class="pie-segment" style="--value:0.98; --color:#777;">Others/NOTA 0.98%</div>
 </div>
 </div>
 <div id="pieDetail" style="display:none; background-color:white; border-radius:8px; padding:15px; margin-top:12px; border-left:4px solid darkorange;">
@@ -131,7 +136,103 @@ Strategy note: a serious ward win here needs hyper-local candidates, not a state
 </div>
 </div>
 </div>
+<h2>Candidate Results — MCD 2022 <span class="election-tag tag-mcd">WARD LEVEL</span></h2>
 
+<div style="overflow-x:auto;">
+<table style="width:100%; border-collapse:collapse; background:white; font-size:13px;">
+<thead>
+<tr style="background:#f5f5f5;">
+<th style="padding:10px; text-align:left;">Ward</th>
+<th style="padding:10px; text-align:left;">Candidate</th>
+<th style="padding:10px; text-align:left;">Party</th>
+<th style="padding:10px;">Votes</th>
+<th style="padding:10px;">Position</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="padding:10px;">Bawana 30</td>
+<td style="padding:10px;">Pawan Kumar</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">10,654</td>
+<td style="padding:10px;">1</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Bawana 30</td>
+<td style="padding:10px;">Braham Prakash</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">9,930</td>
+<td style="padding:10px;">2</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Pooth Khurd 29</td>
+<td style="padding:10px;">Anju Devi</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">13,016</td>
+<td style="padding:10px;">1</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Pooth Khurd 29</td>
+<td style="padding:10px;">Umindera Devi</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">11,522</td>
+<td style="padding:10px;">2</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Bankner 2</td>
+<td style="padding:10px;">Dinesh Kumar</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">10,765</td>
+<td style="padding:10px;">1</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Bankner 2</td>
+<td style="padding:10px;">Vinod Bhardwaj</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">10,387</td>
+<td style="padding:10px;">2</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Holambi Kalan 3</td>
+<td style="padding:10px;">Neha</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">15,631</td>
+<td style="padding:10px;">1</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Holambi Kalan 3</td>
+<td style="padding:10px;">Archana</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">7,490</td>
+<td style="padding:10px;">2</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Nangal Thakran 31</td>
+<td style="padding:10px;">Babita</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">11,661</td>
+<td style="padding:10px;">1</td>
+</tr>
+
+<tr>
+<td style="padding:10px;">Nangal Thakran 31</td>
+<td style="padding:10px;">Manisha Shokeen</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">9,506</td>
+<td style="padding:10px;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2>Candidate Watch — Assembly 2025 <span class="election-tag tag-assembly">STATE</span></h2>
 <div style="display:flex; gap:8px; margin-bottom:10px;">
 <button onclick="showCandidate('bjpCand')" style="padding:8px 14px; border:none; border-radius:4px; background-color:#e0a63c; color:white; cursor:pointer; font-weight:bold;">BJP</button>
@@ -179,11 +280,67 @@ Strategy note: a serious ward win here needs hyper-local candidates, not a state
 <div class="ward-section">
 <h2>Wards on the Ground <span class="election-tag tag-mcd">MCD 2022</span></h2>
 <p style="font-size:13px; color:gray;">Colored top border shows which party won that ward — orange = BJP, blue = AAP.</p>
+<h2>Ward Results Table <span class="election-tag tag-mcd">MCD 2022</span></h2>
+<div style="overflow-x:auto;">
+<table style="width:100%; border-collapse:collapse; background:white; font-size:13px;">
+<thead>
+<tr style="background:#f5f5f5;">
+<th style="padding:10px; text-align:left;">Ward</th>
+<th style="padding:10px; text-align:left;">Winner</th>
+<th style="padding:10px;">Winner Votes</th>
+<th style="padding:10px; text-align:left;">Runner-up</th>
+<th style="padding:10px;">Runner-up Votes</th>
+<th style="padding:10px;">Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:10px;">Bawana (30)</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">10,654</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">9,930</td>
+<td style="padding:10px;">724</td>
+</tr>
+<tr>
+<td style="padding:10px;">Pooth Khurd (29)</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">13,016</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">11,522</td>
+<td style="padding:10px;">1,494</td>
+</tr>
+<tr>
+<td style="padding:10px;">Bankner (2)</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">10,765</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">10,387</td>
+<td style="padding:10px;">378</td>
+</tr>
+<tr>
+<td style="padding:10px;">Holambi Kalan (3)</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">15,631</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">7,490</td>
+<td style="padding:10px;">8,141</td>
+</tr>
+<td style="padding:10px;">Nangal Thakran (31)</td>
+<td style="padding:10px;">BJP</td>
+<td style="padding:10px;">11,661</td>
+<td style="padding:10px;">AAP</td>
+<td style="padding:10px;">9,506</td>
+<td style="padding:10px;">2,155</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="ward-grid">
 <div class="ward-card" style="border-top-color:#3a6ea5;" onclick="showWard('Bawana (Ward 30)', 'MCD 2022: AAP won — Pawan Kumar (AAP) 10,654 votes vs Braham Prakash (BJP) 9,930 votes. Margin: 724.')"><div class="ward-no">WARD 30</div><div class="ward-name">Bawana</div></div>
 <div class="ward-card" style="border-top-color:#e0a63c;" onclick="showWard('Pooth Khurd (Ward 29)', 'MCD 2022: BJP won — Anju Devi (BJP) 13,016 votes vs Uminderà Devi (AAP) 11,522 votes. Margin: 1,494.')"><div class="ward-no">WARD 29</div><div class="ward-name">Pooth Khurd</div></div>
 <div class="ward-card" style="border-top-color:#3a6ea5;" onclick="showWard('Bankner (Ward 2)', 'MCD 2022: AAP won — Dinesh Kumar (AAP) 10,765 votes vs Vinod Bhardwaj (BJP) 10,387 votes. Margin: just 378 votes — the closest race of all 5 wards. Source: SEC Delhi official result summary PDF.')"><div class="ward-no">WARD 2</div><div class="ward-name">Bankner</div></div>
-<div class="ward-card" style="border-top-color:#3a6ea5;" onclick="showWard('Holambi Kalan (Ward 3)', 'MCD 2022: AAP won — Neha (AAP) elected over BJP\'s Archana and INC\'s Monika Chaudhary. Exact margin not yet sourced.')"><div class="ward-no">WARD 3</div><div class="ward-name">Holambi Kalan</div></div>
+<div class="ward-card" style="border-top-color:#3a6ea5;" onclick="showWard('Holambi Kalan (Ward 3)', 'MCD 2022: AAP won — Neha (AAP) elected over BJP\'s Archana and INC\'s Monika Chaudhary. MCD 2022: AAP won — Neha (AAP) 15,631 votes vs Archana (BJP) 7,490 votes. Margin: 8,141..')"><div class="ward-no">WARD 3</div><div class="ward-name">Holambi Kalan</div></div>
 <div class="ward-card" style="border-top-color:#e0a63c;" onclick="showWard('Nangal Thakran (Ward 31)', 'MCD 2022: BJP won — Babita (BJP) 11,661 votes vs Manisha Shokeen (AAP) 9,506 votes. Margin: 2,155.')"><div class="ward-no">WARD 31</div><div class="ward-name">Nangal Thakran</div></div>
 </div>
 
@@ -193,12 +350,16 @@ Strategy note: a serious ward win here needs hyper-local candidates, not a state
 </div>
 
 <h2>Ward-wise Margins <span class="election-tag tag-mcd">MCD 2022</span></h2>
-<p style="font-size:13px; color:gray;">How close each ward's race actually was — a smaller bar means a more contestable seat heading into 2027.</p>
-<div class="bar-row"><div class="bar-label" style="width:140px;">Bankner</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 5%;"></div></div><span style="font-size:12px; margin-left:8px;">378 (AAP) — tightest</span></div>
-<div class="bar-row"><div class="bar-label" style="width:140px;">Bawana</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 10%;"></div></div><span style="font-size:12px; margin-left:8px;">724 (AAP)</span></div>
-<div class="bar-row"><div class="bar-label" style="width:140px;">Pooth Khurd</div><div class="bar-track"><div class="bar-fill bjp-color" style="width: 21%;"></div></div><span style="font-size:12px; margin-left:8px;">1,494 (BJP)</span></div>
-<div class="bar-row"><div class="bar-label" style="width:140px;">Nangal Thakran</div><div class="bar-track"><div class="bar-fill bjp-color" style="width: 30%;"></div></div><span style="font-size:12px; margin-left:8px;">2,155 (BJP)</span></div>
-<div class="bar-row"><div class="bar-label" style="width:140px;">Holambi Kalan</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 8%; opacity:0.5;"></div></div><span style="font-size:12px; margin-left:8px; color:gray;">AAP (margin TBD)</span></div>
+<p style="font-size:13px; color:gray;">Winning margin recorded in the MCD 2022 result for each ward.</p>
+<div class="bar-row"><div class="bar-label" style="width:140px;">Bankner</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 4.6%;"></div></div><span style="font-size:12px; margin-left:8px;">378 (AAP)</span></div>
+
+<div class="bar-row"><div class="bar-label" style="width:140px;">Bawana</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 8.9%;"></div></div><span style="font-size:12px; margin-left:8px;">724 (AAP)</span></div>
+
+<div class="bar-row"><div class="bar-label" style="width:140px;">Pooth Khurd</div><div class="bar-track"><div class="bar-fill bjp-color" style="width: 18.4%;"></div></div><span style="font-size:12px; margin-left:8px;">1,494 (BJP)</span></div>
+
+<div class="bar-row"><div class="bar-label" style="width:140px;">Nangal Thakran</div><div class="bar-track"><div class="bar-fill bjp-color" style="width: 26.5%;"></div></div><span style="font-size:12px; margin-left:8px;">2,155 (BJP)</span></div>
+
+<div class="bar-row"><div class="bar-label" style="width:140px;">Holambi Kalan</div><div class="bar-track"><div class="bar-fill aap-color" style="width: 100%;"></div></div><span style="font-size:12px; margin-left:8px;">8,141 (AAP)</span></div>
 </div>
 
 <h2>Voter Funnels by Party <span class="election-tag tag-mcd">MCD 2022, illustrative</span></h2>
@@ -390,7 +551,8 @@ Strategy note: a serious ward win here needs hyper-local candidates, not a state
 </div>
 
 <div style="margin-top:30px; padding-top:15px; border-top:1px solid #ccc; font-size:12px; color:gray;">
-<strong>Sources:</strong> Assembly 2025 results — ECI, via Wikipedia's Bawana Assembly constituency page. MCD 2022 ward results — State Election Commission, Delhi (sec.delhi.gov.in) official result summary and Form 18 reports. Bankner's 378-vote margin is from SEC Delhi's official ward-wise difference report. Holambi Kalan's exact 2022 margin not yet sourced. Voter funnel percentages are illustrative estimates, not survey data. Segment sizes are rough working estimates. The Candidate Winnability Matrix reflects current sitting figures, not confirmed 2027 candidates (not yet selected). The Voter Growth Matrix adapts the standard Ansoff Matrix (a business-strategy framework) to a campaign context. Loss-aversion framing is based on a standard behavioral-economics concept, applied here as a messaging suggestion, not a tested result.<br><br>
+
+<strong>Sources:</strong>Assembly 2025 results — Election Commission/CEO Delhi, Form 20 for AC-7 Bawana.. MCD 2022 ward results — State Election Commission, Delhi (sec.delhi.gov.in) official result summary and Form 18 reports. Bankner's 378-vote margin is from SEC Delhi's official ward-wise difference report. Holambi Kalan's 2022 result: Neha (AAP) 15,631 votes; Archana (BJP) 7,490 votes; margin 8,141 votes, sourced from SEC Delhi official result material. Voter funnel percentages are illustrative estimates, not survey data. Segment sizes are rough working estimates. The Candidate Winnability Matrix reflects current sitting figures, not confirmed 2027 candidates (not yet selected). The Voter Growth Matrix adapts the standard Ansoff Matrix (a business-strategy framework) to a campaign context. Loss-aversion framing is based on a standard behavioral-economics concept, applied here as a messaging suggestion, not a tested result.<br><br>
 Built as a training exercise in campaign analysis, September 2026. Not affiliated with any party or candidate.
 </div>
 
@@ -419,7 +581,7 @@ function showMcdCandidate(id) {
 }
 
 function updateCountdown() {
-  var electionDate = new Date("2027-02-15");
+  var electionDate = new Date("2027-02-01");
   var today = new Date();
   var diffTime = electionDate - today;
   var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -439,11 +601,7 @@ function showPosMatrixDetail(name, text) {
   document.getElementById("posMatrixDetail").style.display = "block";
 }
 
-function showWinDetail(name, text) {
-  document.getElementById("winDetailTitle").innerText = name;
-  document.getElementById("winDetailText").innerText = text;
-  document.getElementById("winDetail").style.display = "block";
-}
+
 
 function showGrowthDetail(name, text) {
   document.getElementById("growthDetailTitle").innerText = name;
